@@ -1,49 +1,56 @@
 FUNCTION:
-def calculate(x, y):
+def create_simple(app, blueprint):
     """
-    Calculate the sum of two numbers.
+    Create a simple calculator function
 
-    Parameters
-    ----------
-    x : int or float
-        The first number to be calculated.
-    y : int or float
-        The second number to be calculated.
-
-    Returns
-    -------
-    result : int or float
-        The sum of the two numbers.
+    :param app: Flask application object
+    :type app: flask.Flask
+    :param blueprint: Flask blueprint object
+    :type blueprint: flask.Blueprint
+    :return: A simple calculator function
+    :rtype: Callable[[int, int], int]
     """
-    return x + y
+    @app.route("/simple", methods=["POST"])
+    def simple_calculator():
+        try:
+            num1 = int(request.form["num1"])
+            num2 = int(request.form["num2"])
+            result = num1 + num2
+            return f"{num1} + {num2} = {result}"
+        except ValueError as e:
+            return "Invalid input", 400
+    return simple_calculator
 
 TESTS:
 import unittest
-from calculator import calculate
+from flask import Flask, Blueprint
+from unittest.mock import patch
 
-class TestCalculator(unittest.TestCase):
-    def test_calculate_two_positive_numbers(self):
-        result = calculate(5, 3)
-        self.assertEqual(result, 8)
-    
-    def test_calculate_one_negative_number(self):
-        result = calculate(-5, 3)
-        self.assertEqual(result, -2)
-    
-    def test_calculate_two_negative_numbers(self):
-        result = calculate(-5, -3)
-        self.assertEqual(result, -8)
-    
-    def test_calculate_zeroes(self):
-        result = calculate(0, 0)
-        self.assertEqual(result, 0)
-    
-    def test_calculate_different_types(self):
-        with self.assertRaises(TypeError):
-            calculate("5", 3)
-        
-        with self.assertRaises(TypeError):
-            calculate(5, "3")
+class TestSimpleCalculator(unittest.TestCase):
+    def setUp(self):
+        self.app = Flask(__name__)
+        self.blueprint = Blueprint("test_simple", __name__)
+        self.calculator = create_simple(self.app, self.blueprint)
 
-if __name__ == '__main__':
+    def test_valid_inputs(self):
+        with patch("request.form") as mock_form:
+            mock_form["num1"] = "5"
+            mock_form["num2"] = "3"
+            result = self.calculator()
+            self.assertEqual(result, 8)
+
+    def test_invalid_inputs(self):
+        with patch("request.form") as mock_form:
+            mock_form["num1"] = "a"
+            mock_form["num2"] = "b"
+            result = self.calculator()
+            self.assertEqual(result, 0)
+
+    def test_missing_inputs(self):
+        with patch("request.form") as mock_form:
+            del mock_form["num1"]
+            result = self.calculator()
+            self.assertEqual(result, 0)
+
+if __name__ == "__main__":
     unittest.main()
