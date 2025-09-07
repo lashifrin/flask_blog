@@ -1,11 +1,12 @@
-def create_simple(num1: int, num2: int) -> int:
-    """Create a simple calculator function that takes two integers as input and returns their sum.
+def calculator(num1, num2):
+    """
+    Calculates the sum of two numbers.
 
-    Args:
-        num1 (int): The first integer.
-        num2 (int): The second integer.
-
-    Returns:
-        int: The sum of the two integers.
+    :param num1: First number to add
+    :type num1: int or float
+    :param num2: Second number to add
+    :type num2: int or float
+    :return: The sum of num1 and num2
+    :rtype: int or float
     """
     return num1 + num2
