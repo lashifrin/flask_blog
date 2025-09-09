@@ -87,3 +87,52 @@ def delete(id):
     conn.close()
     flash('"{}" was successfully deleted!'.format(post['title']))
     return redirect(url_for('index'))
+
+
+def calculate(a, b):
+    """
+    Returns the result of a simple calculation with two numbers.
+    Parameters
+    ----------
+    a : float or int
+        The first number in the calculation.
+    b : float or int
+        The second number in the calculation.
+    Returns
+    -------
+    float or int
+        The result of the calculation.
+    """
+    return a + b
+
+TESTS:
+
+def calculate(a, b):
+    """
+    Returns the result of a simple calculation with two numbers.
+
+    :param a: The first number
+    :type a: int or float
+    :param b: The second number
+    :type b: int or float
+    :return: The result of the calculation
+    :rtype: int or float
+    """
+    return a + b
+
+TESTS:
+
+def calculator(a, b):
+    """
+    Simple calculator function that takes two numbers as inputs and returns their sum.
+    
+    Args:
+        a (int or float): First number
+        b (int or float): Second number
+    
+    Returns:
+        int or float: Sum of the two numbers
+    """
+    return a + b
+
+TESTS:
