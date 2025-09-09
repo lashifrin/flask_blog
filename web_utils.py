@@ -1,27 +1,22 @@
-def calculator(num1, num2, operation):
+def calculator(num1, num2):
     """
-    A simple calculator function that takes in two numbers and an operation, and returns the result of the calculation.
-    
-    :param num1: The first number for the calculation
-    :type num1: int or float
-    :param num2: The second number for the calculation
-    :type num2: int or float
-    :param operation: The operation to perform on the two numbers
-    :type operation: str (one of '+', '-', '*', '/')
-    
-    :return: The result of the calculation
-    :rtype: int or float
+    Calculates the sum of two numbers.
+
+    Parameters
+    ----------
+    num1 : int or float
+        The first number to add.
+    num2 : int or float
+        The second number to add.
+
+    Returns
+    -------
+    result : int or float
+        The sum of the two numbers.
+
+    Examples
+    --------
+    >>> calculator(3, 5)
+    8
     """
-    if not isinstance(num1, (int, float)):
-        raise TypeError("num1 must be an integer or a float")
-    if not isinstance(num2, (int, float)):
-        raise TypeError("num2 must be an integer or a float")
-    if operation not in ['+', '-', '*', '/']:
-        raise ValueError("operation must be one of '+', '-', '*', '/'")
-    
-    result = {
-        '+': num1 + num2,
-        '-': num1 - num2,
-        '*': num1 * num2,
-        '/': num1 / num2 if num2 != 0 else float('inf'),
-    }[operation]
+    result = num1 + num2
