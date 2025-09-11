@@ -105,34 +105,35 @@ def calculate(a, b):
     """
     return a + b
 
-TESTS:
 
-def calculate(a, b):
-    """
-    Returns the result of a simple calculation with two numbers.
 
-    :param a: The first number
-    :type a: int or float
-    :param b: The second number
-    :type b: int or float
-    :return: The result of the calculation
-    :rtype: int or float
-    """
-    return a + b
+def add_user(username, password):
+    """Add a new user to the database.
 
-TESTS:
+    Parameters:
+        username (str): The username of the new user.
+        password (str): The plaintext password of the new user.
 
-def calculator(a, b):
-    """
-    Simple calculator function that takes two numbers as inputs and returns their sum.
-    
-    Args:
-        a (int or float): First number
-        b (int or float): Second number
-    
     Returns:
-        int or float: Sum of the two numbers
+        None: If the user is successfully added.
+        str: Error message if there was an issue adding the user.
     """
-    return a + b
+    # Connect to database and create cursor
+    conn = sqlite3.connect('database.db')
+    c = conn.cursor()
 
-TESTS:
+    # Check if username already exists
+    check_user = c.execute(f"SELECT * FROM users WHERE username = ?", (username,)).fetchone()
+    if check_user is not None:
+        return f"Username {username} already exists."
+
+    # Hash the password
+    hashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
+
+    # Insert new user into database
+    c.execute("INSERT INTO users (username, password) VALUES (?, ?)", (username, hashed_password))
+
+    # Commit changes and close cursor
+    conn.commit()
+    c.close()
+
