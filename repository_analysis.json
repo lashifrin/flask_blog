@@ -1,0 +1,127 @@
+{
+  "repository_info": {
+    "path": "/Users/leonid.shifrin/ai-course/python/flask_blog",
+    "name": "flask_blog",
+    "size_mb": 0.01,
+    "file_count": 15,
+    "is_git_repo": true,
+    "has_readme": false,
+    "has_license": false
+  },
+  "file_structure": {
+    "total_files": 12,
+    "by_extension": {
+      ".py": 3,
+      ".sql": 1,
+      "": 1,
+      ".json": 1,
+      ".css": 1,
+      ".html": 5
+    },
+    "directories": [
+      "static",
+      "templates",
+      "static/css"
+    ],
+    "python_files": [
+      "hello.py",
+      "app.py",
+      "init_db.py"
+    ],
+    "test_files": [],
+    "config_files": [],
+    "documentation_files": []
+  },
+  "languages": {
+    "languages": {
+      "Python": {
+        "file_count": 3,
+        "percentage": 27.27
+      },
+      "SQL": {
+        "file_count": 1,
+        "percentage": 9.09
+      },
+      "JSON": {
+        "file_count": 1,
+        "percentage": 9.09
+      },
+      "CSS": {
+        "file_count": 1,
+        "percentage": 9.09
+      },
+      "HTML": {
+        "file_count": 5,
+        "percentage": 45.45
+      }
+    },
+    "primary_language": "HTML",
+    "total_code_files": 11
+  },
+  "frameworks": {
+    "detected": [],
+    "web_frameworks": [
+      "flask"
+    ],
+    "testing_frameworks": [],
+    "data_science": [],
+    "ml_ai": []
+  },
+  "dependencies": {
+    "python": {
+      "packages": {},
+      "dev_packages": {},
+      "source_files": []
+    },
+    "javascript": {},
+    "total_dependencies": 0,
+    "dependency_files": []
+  },
+  "testing": {
+    "framework": null,
+    "test_files": [],
+    "test_directories": [],
+    "config_files": [],
+    "coverage_setup": false,
+    "ci_setup": false
+  },
+  "quality_tools": {
+    "linting": [],
+    "formatting": [],
+    "type_checking": [],
+    "security": [],
+    "config_files": []
+  },
+  "git_info": {
+    "is_git_repo": true,
+    "has_gitignore": true,
+    "has_pre_commit": false,
+    "branch_info": {
+      "current": "feature/stage-dev-20250906-233414"
+    },
+    "remote_info": {
+      "remotes": "origin\thttps://github.com/lashifrin/flask_blog.git (fetch)\norigin\thttps://github.com/lashifrin/flask_blog.git (push)"
+    }
+  },
+  "environment": {
+    "python_version": null,
+    "virtual_env": null,
+    "package_managers": [],
+    "docker": false,
+    "ide_config": []
+  },
+  "quality_baseline": {
+    "test_coverage": null,
+    "linting_score": {
+      "return_code": 1,
+      "issues_count": 0
+    },
+    "complexity_score": null,
+    "security_issues": {
+      "return_code": 1,
+      "issues_found": false
+    },
+    "documentation_coverage": null,
+    "timestamp": null
+  }
+}
