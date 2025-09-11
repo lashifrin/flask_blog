@@ -137,3 +137,22 @@ def add_user(username, password):
     conn.commit()
     c.close()
 
+
+
+"""
+    This function takes two arguments and returns their sum.
+
+    :param first_num: (float) The first number to be added.
+    :param second_num: (float) The second number to be added.
+    :return: (float) The sum of the two numbers.
+    """
+    return first_num + second_num
+TESTS:
+
+def calculate(a, b):
+    """
+    Returns the result of a simple calculation with two numbers.
+    """
+    return a + b
+
+TESTS:
