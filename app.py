@@ -87,3 +87,72 @@ def delete(id):
     conn.close()
     flash('"{}" was successfully deleted!'.format(post['title']))
     return redirect(url_for('index'))
+
+
+def calculate(a, b):
+    """
+    Returns the result of a simple calculation with two numbers.
+    Parameters
+    ----------
+    a : float or int
+        The first number in the calculation.
+    b : float or int
+        The second number in the calculation.
+    Returns
+    -------
+    float or int
+        The result of the calculation.
+    """
+    return a + b
+
+
+
+def add_user(username, password):
+    """Add a new user to the database.
+
+    Parameters:
+        username (str): The username of the new user.
+        password (str): The plaintext password of the new user.
+
+    Returns:
+        None: If the user is successfully added.
+        str: Error message if there was an issue adding the user.
+    """
+    # Connect to database and create cursor
+    conn = sqlite3.connect('database.db')
+    c = conn.cursor()
+
+    # Check if username already exists
+    check_user = c.execute(f"SELECT * FROM users WHERE username = ?", (username,)).fetchone()
+    if check_user is not None:
+        return f"Username {username} already exists."
+
+    # Hash the password
+    hashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
+
+    # Insert new user into database
+    c.execute("INSERT INTO users (username, password) VALUES (?, ?)", (username, hashed_password))
+
+    # Commit changes and close cursor
+    conn.commit()
+    c.close()
+
+
+
+"""
+    This function takes two arguments and returns their sum.
+
+    :param first_num: (float) The first number to be added.
+    :param second_num: (float) The second number to be added.
+    :return: (float) The sum of the two numbers.
+    """
+    return first_num + second_num
+TESTS:
+
+def calculate(a, b):
+    """
+    Returns the result of a simple calculation with two numbers.
+    """
+    return a + b
+
+TESTS:
