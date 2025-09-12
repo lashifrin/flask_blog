@@ -282,3 +282,31 @@ def add_login(username, password):
         conn.close()
 
 TESTS:
+
+def calculate(first_num: int, second_num: int) -> int:
+    """
+    Returns the result of a simple calculation with the given numbers.
+    :param first_num: The first number in the calculation
+    :param second_num: The second number in the calculation
+    :return: The result of the calculation
+    """
+    return first_num + second_num
+
+TESTS:
+
+def calculate(num1, num2):
+    """
+    This function takes two numbers as input and returns their sum.
+    """
+    return num1 + num2
+TESTS:
+
+def add(a, b):
+    """
+    Returns the sum of a and b.
+    >>> add(10, 2)
+    12
+    """
+    return a + b
+TESTS:
+import calculator
