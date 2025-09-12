@@ -1,34 +1,27 @@
-FILENAME: email_validator
+FILENAME: login_manager
 
 FUNCTION:
-def validate_email(email: str) -> bool:
-    """
-    Check if an email is valid.
+def add_login(username, password):
+    """Add login functionality for web operations.
 
-    :param email: Email address to check
-    :return: True if the email is valid, False otherwise
-    """
-    import re
+    Args:
+        username (str): The username of the user.
+        password (str): The password of the user.
 
-    regex = r"^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$"
-    return bool(re.match(regex, email))
+    Returns:
+        bool: True if the login is successful, False otherwise.
+    """
+    # Your code here
+    return True
 
 TESTS:
-from email_validator import validate_email
+from login_manager import add_login
 
-class TestEmailValidator(unittest.TestCase):
-    def test_valid_email(self):
-        self.assertTrue(validate_email("test@example.com"))
-    
-    def test_invalid_email(self):
-        self.assertFalse(validate_email("test.example.com"))
-    
-    def test_empty_string(self):
-        self.assertFalse(validate_email(""))
-    
-    def test_non_string(self):
-        with self.assertRaises(TypeError):
-            validate_email(123)
+class TestAddLogin(unittest.TestCase):
+    def test_add_login_successful(self):
+        result = add_login("test_user", "test_password")
+        self.assertTrue(result)
 
-if __name__ == "__main__":
-    unittest.main()
+    def test_add_login_failed(self):
+        result = add_login("test_user", "wrong_password")
+        self.assertFalse(result)
