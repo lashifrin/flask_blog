@@ -156,3 +156,103 @@ def calculate(a, b):
     return a + b
 
 TESTS:
+
+def calculate(a, b):
+    """
+    Returns the result of a simple calculation with two numbers.
+    :param a: The first number
+    :type a: int or float
+    :param b: The second number
+    :type b: int or float
+    :return: The result of the calculation
+    :rtype: int or float
+    """
+    return a + b
+
+TESTS:
+
+def calculate(a, b, operation):
+    """
+    Returns the result of a simple calculation with `+`, `-`, `*` or `/` operator
+    Parameters:
+        a (int or float): First operand
+        b (int or float): Second operand
+        operation (str): Operation to perform. Accepted operations are `+`, `-`, `*`, `/`
+    Returns:
+        result (int or float): Result of the calculation
+    """
+    if operation == '+':
+        return a + b
+    elif operation == '-':
+        return a - b
+    elif operation == '*':
+        return a * b
+    elif operation == '/':
+        return a / b
+    else:
+        raise ValueError("Invalid operation!")
+TESTS:
+
+"""
+    Returns the result of a simple calculation with two numbers.
+    :param a: first number
+    :param b: second number
+    :return: sum of a and b
+"""
+return a + b
+TESTS:
+
+def calculate(num1, num2):
+    """Return the result of a simple calculation with two numbers.
+    
+    Args:
+        num1 (int or float): First number in the calculation.
+        num2 (int or float): Second number in the calculation.
+    
+    Returns:
+        int or float: The result of the calculation.
+    """
+    return num1 + num2
+
+TESTS:
+from math_calculator import calculate
+
+def calculate(a, b):
+    """
+    Returns the result of a simple calculation with two numbers.
+    """
+    return a + b
+
+TESTS:
+from simple_calculator import calculate
+
+FILENAME: calculator_app
+FUNCTION: def calculate(a, b) -> int: """Calculates the sum of two numbers. a and b are integers.""" return a + b
+TESTS:
+
+def calculate(a, b):
+    """
+    Returns the result of a simple calculation with two numbers.
+    """
+    return a + b
+TESTS:
+
+def validate_email(email: str) -> bool:
+    """
+    Validates an email address using a regular expression.
+
+    Parameters
+    ----------
+    email : str
+        The email address to be validated.
+
+    Returns
+    -------
+    bool
+        True if the email address is valid, False otherwise.
+    """
+    pattern = r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+    return re.search(pattern, email) is not None
+
+TESTS:
+from email_validator import validate_email

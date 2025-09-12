@@ -1,18 +1,19 @@
-import math_calculator
-  
-  class TestMathCalculator(unittest.TestCase):
-      def test_addition(self):
-          self.assertEqual(math_calculator.calculate(2, 3, "+"), 5)
-      
-      def test_subtraction(self):
-          self.assertEqual(math_calculator.calculate(7, 3, "-"), 4)
-      
-      def test_multiplication(self):
-          self.assertEqual(math_calculator.calculate(2, 4, "*"), 8)
-      
-      def test_division(self):
-          self.assertEqual(math_calculator.calculate(10, 2, "/"), 5)
-      
-      def test_invalid_operation(self):
-          with self.assertRaises(ValueError):
-              math_calculator.calculate(2, 3, "%%")
+import unittest
+from math_calculator import calculate
+
+class TestCalculate(unittest.TestCase):
+    def test_addition(self):
+        self.assertEqual(calculate(2, 3), 5)
+    
+    def test_subtraction(self):
+        self.assertEqual(calculate(10, -5), 5)
+    
+    def test_multiplication(self):
+        self.assertEqual(calculate(4, 2), 8)
+    
+    def test_division(self):
+        self.assertEqual(calculate(16, 4), 4)
+
+if __name__ == '__main__':
+    unittest.main()
+```

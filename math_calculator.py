@@ -1,22 +1,11 @@
-def calculate(num1: float, num2: float, operation: str) -> float:
+def calculate(a, b):
+    """Calculate the sum of two numbers.
+    
+    Args:
+        a (int or float): The first number to add.
+        b (int or float): The second number to add.
+    
+    Returns:
+        int or float: The result of adding `a` and `b`.
     """
-    This function takes in two numbers and an operation and performs the calculation.
-    :param num1: The first number to be calculated
-    :type num1: float
-    :param num2: The second number to be calculated
-    :type num2: float
-    :param operation: The operation to perform (e.g. +, -, *, /)
-    :type operation: str
-    :return: The result of the calculation
-    :rtype: float
-    """
-    if operation == "+":
-        return num1 + num2
-    elif operation == "-":
-        return num1 - num2
-    elif operation == "*":
-        return num1 * num2
-    elif operation == "/":
-        return num1 / num2
-    else:
-        raise ValueError("Invalid operation")
+    return a + b

@@ -1,9 +1,5 @@
-def add(a: int, b: int) -> int:
-    """Add two integers.
-    Args:
-        a (int): First integer to be added.
-        b (int): Second integer to be added.
-    Returns:
-        int: Sum of the two integers.
+def calculate(a, b):
+    """
+    Returns the result of a simple calculation with two numbers.
     """
     return a + b
