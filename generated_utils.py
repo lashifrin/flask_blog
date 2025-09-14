@@ -1,80 +1,71 @@
-FILENAME: login_handler.py
+FILENAME: calculator.py
 
 FUNCTION:
-def add_login(request, username, password):
+def add(a, b):
     """
-    Adds a new user to the login database.
-    
+    Add two numbers
+
     Parameters:
-        request (flask.Request): The incoming Flask request object.
-        username (str): The user's username.
-        password (str): The user's password.
-    
+        a (int or float): First number
+        b (int or float): Second number
+
     Returns:
-        bool: True if the user was added successfully, False otherwise.
+        int or float: Sum of the two numbers
     """
-    # Check if the username is already taken
-    if not request.session.query(User).filter_by(username=username).first():
-        # Create a new User object
-        user = User(username=username, password=password)
-        # Add the user to the database
-        db.session.add(user)
-        db.session.commit()
-        return True
-    else:
-        return False
+    return a + b
+
+def subtract(a, b):
+    """
+    Subtract two numbers
+
+    Parameters:
+        a (int or float): First number
+        b (int or float): Second number
+
+    Returns:
+        int or float: Difference of the two numbers
+    """
+    return a - b
+
+def multiply(a, b):
+    """
+    Multiply two numbers
+
+    Parameters:
+        a (int or float): First number
+        b (int or float): Second number
+
+    Returns:
+        int or float: Product of the two numbers
+    """
+    return a * b
+
+def divide(a, b):
+    """
+    Divide two numbers
+
+    Parameters:
+        a (int or float): First number
+        b (int or float): Second number
+
+    Returns:
+        int or float: Quotient of the two numbers
+    """
+    return a / b
 
 TESTS:
-import login_handler
-from flask import Flask, Request
-from flask.sessions import Session
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
+import calculator
+from unittest import TestCase
 
-def test_add_login():
-    # Create a mock request and user object
-    request = Request({"username": "test_user", "password": "test_pass"})
-    user = {"username": "test_user", "password": "test_pass"}
-    
-    # Create a mock database session
-    engine = create_engine("sqlite://")
-    Session.configure(bind=engine)
-    db_session = Session()
-    
-    # Add the user to the database
-    login_handler.add_login(request, user["username"], user["password"])
-    
-    # Check if the user was added successfully
-    assert db_session.query(User).filter_by(username=user["username"]).first() is not None
+class CalculatorTest(TestCase):
+    def test_addition(self):
+        self.assertEqual(calculator.add(1, 2), 3)
 
-def test_add_login_existing_user():
-    # Create a mock request and user object
-    request = Request({"username": "test_user", "password": "test_pass"})
-    user = {"username": "test_user", "password": "test_pass"}
-    
-    # Create a mock database session
-    engine = create_engine("sqlite://")
-    Session.configure(bind=engine)
-    db_session = Session()
-    
-    # Add the user to the database
-    login_handler.add_login(request, user["username"], user["password"])
-    
-    # Check if the user was added successfully
-    assert db_session.query(User).filter_by(username=user["username"]).first() is not None
+    def test_subtraction(self):
+        self.assertEqual(calculator.subtract(5, 2), 3)
 
-def test_add_login_invalid_password():
-    # Create a mock request and user object
-    request = Request({"username": "test_user", "password": "test_pass12345"})
-    user = {"username": "test_user", "password": "test_pass"}
-    
-    # Create a mock database session
-    engine = create_engine("sqlite://")
-    Session.configure(bind=engine)
-    db_session = Session()
-    
-    # Add the user to the database
-    login_handler.add_login(request, user["username"], "test_pass12345")
-    
-    # Check if the user was added successfully
-    assert db_session.query(User).filter_by(username=user["username"]).first() is None
+    def test_multiplication(self):
+        self.assertEqual(calculator.multiply(3, 4), 12)
+
+    def test_division(self):
+        self.assertEqual(calculator.divide(8, 2), 4)
