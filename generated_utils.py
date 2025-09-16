@@ -1,33 +1,44 @@
-FILENAME: calculator
+FILENAME: login_manager.py
 
 FUNCTION:
-def add(a, b):
-    """Add two numbers together.
-
-    Parameters
-    ----------
-    a : int or float
-        The first number to add.
-    b : int or float
-        The second number to add.
-
-    Returns
-    -------
-    result : int or float
-        The sum of the two numbers.
-
+def add_login(username, password):
     """
-    return a + b
+    Adds a new user to the login system.
+
+    :param username: The username of the new user
+    :type username: str
+    :param password: The password of the new user
+    :type password: str
+    :return: A boolean indicating whether the user was added successfully
+    :rtype: bool
+    """
+    if not isinstance(username, str) or not isinstance(password, str):
+        raise ValueError("Username and password must be strings.")
+
+    user_exists = check_user_exists(username)
+    if user_exists:
+        return False
+
+    create_new_user(username, password)
+    return True
 
 TESTS:
-import calculator
-from unittest import TestCase
+import unittest
+from login_manager import add_login
 
-class CalculatorTest(TestCase):
-    def test_add(self):
-        self.assertEqual(calculator.add(2, 3), 5)
-        self.assertEqual(calculator.add(-1, -1), -2)
-        self.assertEqual(calculator.add(0.5, 0.8), 1.3)
+class TestAddLogin(unittest.TestCase):
+    def test_add_login_valid(self):
+        result = add_login("test_user", "test_pass")
+        self.assertTrue(result)
 
-if __name__ == '__main__':
+    def test_add_login_invalid(self):
+        with self.assertRaises(ValueError):
+            add_login(123, "test_pass")
+
+    def test_add_login_user_exists(self):
+        create_new_user("existing_user", "existing_pass")
+        result = add_login("existing_user", "test_pass")
+        self.assertFalse(result)
+
+if __name__ == "__main__":
     unittest.main()
